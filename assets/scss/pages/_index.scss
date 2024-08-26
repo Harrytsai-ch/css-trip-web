@@ -1,0 +1,705 @@
+.nav-border{
+    @include pc {
+        border: 1px solid $neutral-200;
+    }
+}
+
+.banner{
+    position: relative;
+    padding: 0;
+    @include pc {
+        padding: 5rem 0.75rem;
+    }    
+    picture{
+        img{
+            width: 100%;
+        }
+    }
+
+    &-content{
+        // 手機版必須給w-100，不然h1會折行
+        width: 100%;
+        position: absolute;
+        top:65%;
+        left:50%;
+        transform: translateX(-50%);
+        color: white;
+        text-align: center;
+        @include pc{
+            // 電腦版必須給w-auto，不然會有X軸
+            width: auto;
+            margin-left: 3.75rem;
+            left: 0;
+            top:50%;
+            transform: translateY(-50%);
+            text-align: left;
+        }
+
+        h2 {
+            font-size: 1rem;
+            font-weight: 700;
+            @include pc {
+                font-size: 1.25rem;
+                font-weight: 900;
+            }
+        }
+
+        h1 {
+            font-size: calc(1rem * 0.875 * 2);
+            font-weight: 900;
+            @include pc{
+                font-size: calc(1rem * 2.5);
+            }
+        }
+        
+        .btn{
+            padding: 0.75rem 1.25rem;
+            font-size: 1rem;
+            font-weight: 700;
+
+            @include pc{
+            padding: 1rem 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 900;
+            }
+        }
+    }
+}
+
+.theme{
+    padding:3rem 0.75rem;
+    @include pc {
+        padding: 5rem 0.75rem;
+    }
+
+    li {
+        img {
+            width: 100%;
+            border-radius: 1.25rem 0px;
+        }
+
+        a {
+            display: block;
+            position: relative;
+            &::before{
+                content:"";
+                display: block;
+                position: absolute;
+                top:0;
+                left:0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                transition: opacity 0.5s;
+                background: rgba($color: #212529, $alpha: 0.4);
+                border-radius: 1.25rem 0px;
+            }
+            &:hover::before{
+                opacity: 1;
+            }
+
+            span {
+                position: absolute;
+                left:50%;
+                top:50%;
+                transform: translate(-50%,-50%);
+                color: $white;
+                font-weight: 700;
+            }
+        }
+    }
+
+    .row {
+        row-gap: 0.5rem;
+        @include pc {
+            row-gap: 1.5rem;
+        }
+    }
+}
+
+.article{
+    padding:48px 12px;
+    @include pc {
+        padding: 80px 12px;
+    }
+
+    h4 {
+        @include pc{
+            margin-bottom: 0;
+        }
+    }
+
+    .col-4-content {
+        @include mobile {
+            display: none;
+        } 
+
+        @include pc {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            
+            span{
+                color:$neutral-500;
+            }
+        
+            .btn-outline{
+                color:$neutral-400;
+                border:1px solid $neutral-400;
+                border-radius:100px ;
+                padding: 0.25rem  1rem;
+            }
+        }
+    }
+
+    .col-4-content-sm {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 44px;
+        
+        span{
+            color:$neutral-500;
+        }
+    
+        .btn-outline{
+            color:$neutral-400;
+            border:1px solid $neutral-400;
+            border-radius:100px ;
+            padding: 0.25rem  1rem;
+        }
+
+        @include pc {
+            display: none;
+        }  
+    }
+
+    .swiper {
+        width: 100%;
+        height: 100%;
+    }
+
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .card {
+        background-color: $primary;
+        border:0;
+        border-radius: 0;
+        --bs-card-inner-border-radius:0;
+        text-align: left;
+
+        &-body {
+            padding: 0;
+            height: 100%;
+        }
+
+        &-bottom {
+            margin-top: auto;
+            margin:2rem  0;
+            display: flex;
+            justify-content: space-between;
+
+            a {
+                color:$secondary-200;
+                padding:0;
+                font-size: 1.25rem;
+                font-weight: 700;
+            }
+
+            span {
+                color:$primary-400;
+                background-color: $primary-300;
+                padding: 0 0.5rem;
+            }
+        }
+
+        &-title {
+            margin-top: 1.5rem;
+            color:$neutral-500;
+        }
+
+        &-text {
+            // 內容必須給高，否則會跑版，
+            // 因為套件(swiper)無法運用格線系統，
+            // 因此如果使用高度100%，就會沒有效果，
+            // 目前解方：限縮內容高度，如果內容高度大於96px，系統自動截斷文字
+            height: 6rem;
+            overflow: hidden;
+            white-space: wrap;
+            color:$neutral-400;
+            font-size: 1rem;
+        }
+
+        .border-bottom {
+            border-bottom: 1px solid $neutral-500;
+        }
+    }
+}
+
+.bg-primary-200 {
+    background-color: $primary-200;
+}
+
+.subscription {
+    padding:3rem 0.75rem;
+    @include pc {
+        padding: 5rem 0.75rem;
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    // 把圖片下緣切除
+        
+    h4,h2 {
+        margin-bottom: 1.25rem;
+    }
+
+    h4 {
+        color:$primary-400;
+    }
+
+    h2 {
+        color:$neutral-500;
+    }
+
+    li {
+        margin-bottom: 1rem;
+        color:$neutral-400;
+        font-weight: 600;
+    }
+
+    .btn{
+        color:#FFF;
+        font-weight: 900;
+        margin:0 auto;
+        padding: 1rem 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .left-pic {
+        @include mobile{
+            display: none;
+        }
+        @include pc{
+            display: block;
+            position: absolute;
+            left:0;
+            bottom: -1%;
+        }
+    }
+
+    .right-pic {
+        position: absolute;
+        right:-2%;
+        bottom: -2%;
+    }
+
+}
+
+.focus {
+    padding:3rem 0.75rem;
+
+    .row{
+        display: none;
+    }
+
+    .card {
+        --bs-card-border-radius: 0;
+        border:0;
+        box-shadow: 0 2px 8px rgba(110, 107, 103, 0.08); /* 添加陰影 */
+        border-radius: 0.75rem;
+        li {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis; 
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .hashtag {
+            display: flex;
+            li {
+                color: $primary-400;
+                background-color: $primary-300;
+                margin:1.5rem 0.625rem 1.5rem 0;
+                border-radius: 0.25rem;
+                padding: 0.25rem 0.5rem;
+                font-size: 0.75rem;
+                font-weight: 700;
+            }
+        }
+    }
+
+    @include pc {
+        padding: 5rem 0.75rem;
+
+        // 手機版
+        .swiper {
+            display: none;
+        }
+
+        .row {
+            display: flex;
+        }
+        // 容器
+        .col-lg-3 {
+            // 次容器
+            ul{
+                background-color: #fff;
+                height: 100%;
+                padding: 1.5rem;
+                li {
+                    color:#212529;
+                    font-weight: 900;
+                    font-size: 1.25rem;
+
+                    a {
+                        width: 100%;
+                        padding: 1rem;
+                        display: inline-block;
+                        white-space: nowrap;
+                        overflow: hidden; /* 隱藏超出部分的文字 */
+                        text-overflow: ellipsis; /* 使用省略號來表示被截斷的文字 */
+                    }
+
+                    a:hover {
+                        background-color: $secondary-100;
+                    }
+                } 
+            }      
+        }
+
+        .col-lg-9 {
+            .content {
+                padding: 2.5rem;
+                background-color: #FFF;
+                font-weight: 700;
+                h4 {
+                    margin-bottom: 1.5rem;
+                }
+
+                img {
+                    max-width: 100%;
+                    border-radius: 0 1.25rem;
+                }
+
+                &-bottom {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin:1.5rem 0;
+                }
+
+                .hashtag {
+                    display: flex;
+                    column-gap: 1rem;
+                    li {
+                        color: $primary-400;
+                        background-color: $primary-300;
+                        margin:1.5rem 0.625rem 1.5rem 0;
+                        border-radius: 0.25rem;
+                        padding: 0.25rem 0.5rem;
+                        font-size: 1rem;
+                        font-weight: 700;
+                    }
+                }
+                a {
+                    font-size: 1.25rem;
+                    font-family:$newsreader;
+                }
+
+            }
+        }
+    }
+}
+
+.bottom-btn{
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: $success;
+    font-family: $newsreader;
+}
+
+.life {
+    padding:3rem 0.75rem;
+    @include pc {
+        padding: 5rem 0.75rem;
+    }
+
+    strong {
+        color:$primary-400;
+        font-size: 2.5rem;
+        @include pc{
+            font-size: 3.25rem;
+        }
+    }
+
+    .card {
+        --bs-card-border-radius: 0;
+        border:0;
+        background-color: $primary;
+        margin-top: 1.5rem;
+        @include pc {
+            margin-top: 2.25rem;
+        }
+
+        img{ 
+            width: 100%;
+            max-width: 100%;
+        }
+
+        &-body {
+            padding: 1.5rem 0;
+            @include pc{
+                padding: 2.25rem 0;
+            }
+        }
+        
+        .card-text {
+            li {
+                color:$neutral-500;
+                font-size: 1rem;
+                font-weight: 700;
+                margin-bottom: 1.25rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis; 
+
+                @include pc {
+                    font-size: 1.25rem;
+                    font-weight: 900;
+                }
+            }
+        }
+
+        .bottom-btn{
+            font-size: 1.25rem;
+        }
+    }
+}
+
+.proposal {
+    padding:3rem 0.75rem;
+    @include pc {
+        padding: 5rem 0.75rem;
+    }
+
+    .left-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include pc {
+            height: 100%;
+            align-items: start;
+            justify-content: center;
+            h4 {
+                display: none;
+            }
+        }
+
+        .title {
+            @include mobile {
+                display: none;
+            }
+            @include pc {
+                display: block;
+                color:$gray-800;
+                font-size: 2rem;
+                font-weight: 900;
+            }
+        }
+
+        p {
+            font-size: 1rem;
+            font-weight: 700;
+            color:$gray-600;
+            margin-bottom: 1rem;
+        }
+
+        h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .btn{
+            margin-top: 1rem;
+            padding: 0.75rem 1.25rem;
+            font-size: 1rem;
+            font-weight: 700;
+
+            @include pc{
+            padding: 1rem 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 900;
+            }
+        }
+    }
+
+    .swiper{
+        @include pc{
+            display: none;
+        }
+    }
+
+    .pc {
+        @include mobile {
+            display: none;
+        }
+        @include pc {
+            display: flex;
+        }
+        
+    }
+
+    .mt-40 {
+        margin-top: 2.5rem;
+    }
+
+    .right-block {
+        margin-top: 3rem;
+        @include pc{
+            margin-top: 0;
+        }
+        position: relative;
+
+    a {
+        width: 100%;
+        display: block;
+        position: relative;
+        &::before {
+            content: "";
+            border-radius: 0.25rem;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top:0;
+            left:0;
+            transition: opacity 0.5s;
+            opacity: 0;
+            background: linear-gradient(0deg, rgba(33, 37, 41, 1) 0%, rgba(33, 37, 41, 0.05) 100%);;
+        }
+        &:hover::before {
+            opacity: 1;
+        }
+    }
+        .card-text {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            padding:0.75rem;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            opacity: 0;
+            &:hover {
+                color: #FFF;
+                opacity: 1;
+            } 
+        }
+
+        img {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 0.25rem;
+        }
+
+        .left-tag {
+            padding: 0.5rem 0.75rem;
+            position: absolute;
+            border-radius: 0.25rem;
+            left: 3%;
+            top:0;
+            transform: translateY(-50%);
+            background-color: #fff;
+            font-weight: 700;
+            color: $secondary-300;
+        } 
+    }
+}
+
+.contact-us {
+    padding:3rem 0.75rem;
+    
+    span {
+        display: block;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color:$gray-800;
+    }
+
+    &-title {
+        text-align: center;
+    }
+
+    .btn-success {
+        font-size: 1.25rem;
+        font-weight: 900;
+    }
+
+    .align-position {
+        text-align: center;
+        margin-top: 2.25rem;
+    }
+
+    .pc{
+        display: none;
+    }
+
+    @include pc { 
+        padding: 5rem 0.75rem;
+        &-title {
+            display: flex;
+            justify-content: space-between;
+        }
+        h4 {
+            margin: 0;
+            display: none;
+        }
+        .align-position{
+            text-align: right;
+            margin-top: 1rem;
+        }
+        .pc {
+            display: block;
+            font-size:2rem;
+            font-weight: 900;
+        }
+    }
+}
+
+.copyright {
+    padding: 0 0.75rem;
+    .bottom-text {
+        padding: 1.5rem 0;
+        color:$primary-400;
+        text-align: center;
+        font-weight: 600;
+        font-size: .875rem;
+        @include pc{
+            font-size: 1rem;
+        }
+    }
+    .nav-border{
+        border: 1px solid $neutral-200;
+    }
+}

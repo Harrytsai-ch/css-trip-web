@@ -1,0 +1,45 @@
+body {
+    font-family: "Noto Serif TC", serif;
+    letter-spacing: calc(0.1 * 1rem);
+}
+
+.btn {
+    padding: 1rem 1.25rem;
+    letter-spacing: calc(0.1 * 1rem);
+}
+
+$newsreader: "Newsreader", serif;
+
+
+h1,h2,h3,h4,h5,h6 {
+    letter-spacing: 0.1rem;
+    margin-bottom: 0;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+    margin:0;
+    padding:0;
+  }
+
+  *,*:before,*:after {
+    // outline: solid 1px;
+}
+
+h4 {
+    margin-bottom: 1.5rem;
+    @include pc {
+        font-size: 2rem;
+        margin-bottom: 2.5rem;
+    }
+}

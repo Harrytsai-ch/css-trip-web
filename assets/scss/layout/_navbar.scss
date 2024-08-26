@@ -1,0 +1,77 @@
+.navbar {    
+      padding:2.25rem  0;
+      &-logo {
+        color:$neutral-500;
+        font-size: 1.75rem;
+        margin-right: 0.75rem;
+        font-family: $newsreader;
+      }
+
+      &-toggler{
+        border:0;
+      }
+
+    .input-group {
+      height:3rem;
+      margin-bottom: 1.5rem;
+      @include pc{
+        width: 276px;
+        margin-bottom: 0;
+      }
+
+      .form-control {
+        padding: 0 0.75rem;
+        border-top:1px solid $neutral-200;
+        border-bottom:1px solid $neutral-200;
+        border-left:1px solid $neutral-200;
+        color:$neutral-300;
+      }
+
+      .btn {
+        padding: 0 1rem 0 0;
+        border-top:1px solid $neutral-200;
+        border-bottom:1px solid $neutral-200;
+        border-right:1px solid $neutral-200; 
+      }
+    }
+
+  &-collapse {
+    margin-top: 1.5rem;
+    @include pc {
+      margin-top: 0;
+    }
+  }
+
+  &-nav {
+    @include pc{
+      margin-left: auto;
+      align-items: center;
+    }
+
+    li {
+      margin-left: 0.75rem;
+      margin-bottom: 1.5rem;
+      &:last-child{
+        margin:0; 
+      }
+      @include pc{
+        margin:0 1.25rem 0 0;
+      }
+    }
+
+    .nav-item {
+      font-weight: 700;
+        .nav-link {
+          color:$neutral-500;
+        }
+        .btn {
+            width: 100%;
+            color: #FFF;
+            font-weight: 700;
+            @include pc {
+              padding:0.8rem 1.5rem;
+            }
+        }
+    }
+  }  
+}
