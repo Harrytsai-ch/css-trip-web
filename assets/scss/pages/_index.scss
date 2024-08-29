@@ -56,7 +56,6 @@
             padding: 0.75rem 1.25rem;
             font-size: 1rem;
             font-weight: 700;
-
             @include pc{
             padding: 1rem 1.5rem;
             font-size: 1.25rem;
@@ -97,7 +96,6 @@
             &:hover::before{
                 opacity: 1;
             }
-
             span {
                 position: absolute;
                 left:50%;
@@ -155,19 +153,19 @@
     .col-4-content-sm {
         display: flex;
         justify-content: space-between;
-        margin-top: 44px;
-        
+        margin-top: 44px; 
+
         span{
             color:$neutral-500;
         }
-    
+
         .btn-outline{
             color:$neutral-400;
             border:1px solid $neutral-400;
             border-radius:100px ;
             padding: 0.25rem  1rem;
         }
-
+        
         @include pc {
             display: none;
         }  
@@ -360,28 +358,32 @@
         }
         // 容器
         .col-lg-3 {
-            // 次容器
+            // 系統預設flex，以下更改預設
+            .nav {
+                flex-direction: column;
+                flex-wrap: nowrap;
+            }
+            .nav-tabs {
+                border-bottom: 0;
+            }
+        // 次容器
             ul{
                 background-color: #fff;
                 height: 100%;
                 padding: 1.5rem;
-                li {
-                    color:#212529;
-                    font-weight: 900;
-                    font-size: 1.25rem;
+            }
 
-                    a {
-                        width: 100%;
-                        padding: 1rem;
-                        display: inline-block;
-                        white-space: nowrap;
-                        overflow: hidden; /* 隱藏超出部分的文字 */
-                        text-overflow: ellipsis; /* 使用省略號來表示被截斷的文字 */
-                    }
-
-                    a:hover {
-                        background-color: $secondary-100;
-                    }
+            .nav-link {
+                width: 100%;
+                border:0;
+                border-radius: 0;
+                padding: 1rem 0;
+                font-size: 1.25rem;
+                font-weight: 900;
+                color:#212529;
+                text-align: left;
+                &.active{
+                    background-color: #e0efde;
                 } 
             }      
         }
@@ -406,25 +408,24 @@
                     align-items: center;
                     margin:1.5rem 0;
                 }
-
-                .hashtag {
-                    display: flex;
-                    column-gap: 1rem;
-                    li {
-                        color: $primary-400;
-                        background-color: $primary-300;
-                        margin:1.5rem 0.625rem 1.5rem 0;
-                        border-radius: 0.25rem;
-                        padding: 0.25rem 0.5rem;
-                        font-size: 1rem;
-                        font-weight: 700;
-                    }
-                }
                 a {
                     font-size: 1.25rem;
                     font-family:$newsreader;
                 }
+            }
 
+            .hashtag {
+                display: flex;
+                column-gap: 1rem;
+                li {
+                    color: $primary-400;
+                    background-color: $primary-300;
+                    margin:1.5rem 0.625rem 1.5rem 0;
+                    border-radius: 0.25rem;
+                    padding: 0.25rem 0.5rem;
+                    font-size: 1rem;
+                    font-weight: 700;
+                }
             }
         }
     }
@@ -442,6 +443,26 @@
     padding:3rem 0.75rem;
     @include pc {
         padding: 5rem 0.75rem;
+    }
+
+    .button-pc {
+        display: none;
+        @include pc {
+            display: flex;
+        }
+    }
+
+    .btn-outline{
+        color:$neutral-400;
+        border:1px solid $neutral-400;
+        border-radius:100px ;
+        padding: 0.25rem  1rem;
+    }
+
+    h4 {
+        @include pc {
+            margin-bottom: 0;
+        }
     }
 
     strong {
@@ -482,7 +503,6 @@
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis; 
-
                 @include pc {
                     font-size: 1.25rem;
                     font-weight: 900;
@@ -506,7 +526,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-
         @include pc {
             height: 100%;
             align-items: start;
@@ -544,11 +563,10 @@
             padding: 0.75rem 1.25rem;
             font-size: 1rem;
             font-weight: 700;
-
             @include pc{
-            padding: 1rem 1.5rem;
-            font-size: 1.25rem;
-            font-weight: 900;
+                padding: 1rem 1.5rem;
+                font-size: 1.25rem;
+                font-weight: 900;
             }
         }
     }
@@ -594,7 +612,7 @@
             left:0;
             transition: opacity 0.5s;
             opacity: 0;
-            background: linear-gradient(0deg, rgba(33, 37, 41, 1) 0%, rgba(33, 37, 41, 0.05) 100%);;
+            background: linear-gradient(0deg, rgba(33, 37, 41, 1) 0%, rgba(33, 37, 41, 0.05) 100%);
         }
         &:hover::before {
             opacity: 1;
@@ -639,6 +657,9 @@
 
 .contact-us {
     padding:3rem 0.75rem;
+    @include pc { 
+        padding: 5rem 0.75rem;
+    }
     
     span {
         display: block;
@@ -649,6 +670,10 @@
 
     &-title {
         text-align: center;
+        @include pc {
+            display: flex;
+            justify-content: space-between;
+        }
     }
 
     .btn-success {
@@ -659,27 +684,29 @@
     .align-position {
         text-align: center;
         margin-top: 2.25rem;
+        @include pc { 
+            text-align: right;
+            margin-top: 1rem;
+        }
+        .btn {
+            padding:0.75rem 1.25rem;
+            font-size: 1rem;
+            @include pc { 
+                padding:1rem 1.5rem;
+                font-size: 1.25rem;
+            }
+        }
+    }
+
+    h4 {
+        @include pc { 
+            display: none;
+        }
     }
 
     .pc{
         display: none;
-    }
-
-    @include pc { 
-        padding: 5rem 0.75rem;
-        &-title {
-            display: flex;
-            justify-content: space-between;
-        }
-        h4 {
-            margin: 0;
-            display: none;
-        }
-        .align-position{
-            text-align: right;
-            margin-top: 1rem;
-        }
-        .pc {
+        @include pc { 
             display: block;
             font-size:2rem;
             font-weight: 900;
@@ -687,19 +714,4 @@
     }
 }
 
-.copyright {
-    padding: 0 0.75rem;
-    .bottom-text {
-        padding: 1.5rem 0;
-        color:$primary-400;
-        text-align: center;
-        font-weight: 600;
-        font-size: .875rem;
-        @include pc{
-            font-size: 1rem;
-        }
-    }
-    .nav-border{
-        border: 1px solid $neutral-200;
-    }
-}
+
